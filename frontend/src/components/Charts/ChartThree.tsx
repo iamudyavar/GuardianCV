@@ -35,6 +35,7 @@ const options: ApexOptions = {
       options: {
         chart: {
           width: 380,
+          height: 286,
         },
       },
     },
