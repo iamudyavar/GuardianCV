@@ -8,6 +8,8 @@ from computerVision.pose_estimation import estimate_pose
 hog = cv2.HOGDescriptor()
 hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
 
+
+## ADD MULTIMODAL HERE
 def multiResponse():
 
 
