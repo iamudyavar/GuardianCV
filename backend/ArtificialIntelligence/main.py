@@ -39,9 +39,7 @@ def main():
             # Ensure ROI has a valid size
             if roi.size > 0:
                 try:
-                    gender = predict_gender(roi)
-                    injury_detected = detect_injury(roi) 
-                    pose = estimate_pose(roi) 
+                    gender = multiResponse(roi)
 
                     # Add information on the frame
                     label = f"{gender}, Injury: {'Yes' if injury_detected else 'No'}"
