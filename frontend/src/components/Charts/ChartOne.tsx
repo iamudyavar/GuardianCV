@@ -131,13 +131,8 @@ interface ChartOneState {
 const ChartOne: React.FC = () => {
   const series = [
     {
-      name: "Product One",
+      name: "Patients",
       data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30, 45],
-    },
-
-    {
-      name: "Product Two",
-      data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39, 51],
     },
   ];
 
@@ -153,7 +148,7 @@ const ChartOne: React.FC = () => {
               <p className="font-semibold text-primary">
                 Number of patients waiting
               </p>
-              <p className="text-sm font-medium">12.04.2022 - 12.05.2022</p>
+              {/* <p className="text-sm font-medium">12.04.2022 - 12.05.2022</p> */}
             </div>
           </div>
           {/* <div className="flex min-w-47.5">
