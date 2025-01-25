@@ -19,11 +19,7 @@ const CardDataStats: React.FC<CardDataStatsProps> = ({
 }) => {
   return (
     <div className="rounded-sm border border-stroke bg-white px-7.5 py-6 shadow-default dark:border-strokedark dark:bg-boxdark">
-      <div className="flex h-11.5 w-11.5 items-center justify-center rounded-full">
-        {children}
-      </div>
-
-      <div className="mt-4 flex items-end justify-between">
+      <div className="flex items-end justify-between">
         <div>
           <h4 className="text-title-md font-bold text-black dark:text-white">
             {total}
@@ -36,6 +32,9 @@ const CardDataStats: React.FC<CardDataStatsProps> = ({
             levelUp && "text-meta-3"
           } ${levelDown && "text-meta-5"} `}
         ></span>
+        <div className="flex h-11.5 w-11.5 items-center justify-center rounded-full">
+          {children}
+        </div>
       </div>
     </div>
   );
