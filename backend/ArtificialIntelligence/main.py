@@ -9,6 +9,10 @@ hog = cv2.HOGDescriptor()
 hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
 
 
+## ADD MULTIMODAL HERE
+def multiResponse():
+
+
 def main():
     cv2.startWindowThread()
     cap = cv2.VideoCapture(0)
@@ -39,16 +43,12 @@ def main():
             # Ensure ROI has a valid size
             if roi.size > 0:
                 try:
-                    gender = predict_gender(roi)
-                    injury_detected = detect_injury(roi) 
-                    pose = estimate_pose(roi) 
+                    _, encoded_image = cv2.imencode('.jpg', roi)
 
-                    # Add information on the frame
-                    label = f"{gender}, Injury: {'Yes' if injury_detected else 'No'}"
-                    cv2.putText(frame, label, (xA, yA - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+
                     
                 except Exception as e:
-                    print(f"Error processing ROI: {e}")
+                    pass
 
         # Save frame to output video
         out.write(frame.astype('uint8'))
