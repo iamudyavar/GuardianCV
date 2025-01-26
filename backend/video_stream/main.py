@@ -5,16 +5,16 @@ import PIL.Image
 import torch
 from ultralytics import YOLO
 
-#class ResettableTimer:
-#    def __init__(self, timeout):
-#        self.timeout = timeout
-#        self.start_time = time.time()
-#
-#    def reset(self):
-#        self.start_time = time.time()
-#
-#    def is_timeout(self):
-#        return time.time() - self.start_time >= self.timeout
+class ResettableTimer:
+    def __init__(self, timeout):
+        self.timeout = timeout
+        self.start_time = time.time()
+
+    def reset(self):
+        self.start_time = time.time()
+
+    def is_timeout(self):
+        return time.time() - self.start_time >= self.timeout
 
 print("Loading...")
 model = YOLO("yolov5s.pt")
@@ -28,7 +28,7 @@ def main():
     cv2.startWindowThread()
     cap = cv2.VideoCapture(0)
     out = cv2.VideoWriter('output.avi', cv2.VideoWriter_fourcc(*'MJPG'), 15., (int(cap.get(3)), int(cap.get(4))))
-    #thresholder = ResettableTimer(10)
+    #thresholder = ResettableTimer(1)
 
     while True:
         storage = []
@@ -63,17 +63,17 @@ def main():
 
         #if thresholder.is_timeout():
         print("10 seconds have passed! Performing action...")
-        print(len(storage))
-        return(len(storage))
+        print("Number of people detected:", len(storage))
+        #return(len(storage))
             #thresholder.reset()
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
+        
+        time.sleep(2)
+        cap.release()
+        out.release()
+        cv2.destroyAllWindows()
+        cv2.waitKey()
 
-    cap.release()
-    out.release()
-    cv2.destroyAllWindows()
-    cv2.waitKey()
-
-if __name__ == "__main__":
-    main()
+main()
