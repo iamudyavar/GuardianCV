@@ -1,121 +1,138 @@
-import { BRAND } from "@/types/brand";
+import { PATIENT } from "@/types/brand";
 import Image from "next/image";
 
-const brandData: BRAND[] = [
+const patientData: PATIENT[] = [
   {
-    logo: "/images/brand/brand-01.svg",
-    name: "Google",
-    visitors: 3.5,
-    revenues: "5,768",
-    sales: 590,
-    conversion: 4.8,
+    picture: "/images/brand/brand-01.svg",
+    name: "Google Google",
+    severity: 1,
+    timeWaited: 3,
   },
   {
-    logo: "/images/brand/brand-02.svg",
-    name: "Twitter",
-    visitors: 2.2,
-    revenues: "4,635",
-    sales: 467,
-    conversion: 4.3,
+    picture: "/images/brand/brand-02.svg",
+    name: "Twitter Twitter",
+    severity: 3,
+    timeWaited: 15,
   },
   {
-    logo: "/images/brand/brand-03.svg",
-    name: "Github",
-    visitors: 2.1,
-    revenues: "4,290",
-    sales: 420,
-    conversion: 3.7,
+    picture: "/images/brand/brand-03.svg",
+    name: "Github Github",
+    severity: 2,
+    timeWaited: 2,
   },
   {
-    logo: "/images/brand/brand-04.svg",
-    name: "Vimeo",
-    visitors: 1.5,
-    revenues: "3,580",
-    sales: 389,
-    conversion: 2.5,
+    picture: "/images/brand/brand-04.svg",
+    name: "Vimeo Vimeo",
+    severity: 5,
+    timeWaited: 45,
   },
   {
-    logo: "/images/brand/brand-05.svg",
-    name: "Facebook",
-    visitors: 3.5,
-    revenues: "6,768",
-    sales: 390,
-    conversion: 4.2,
+    picture: "/images/brand/brand-05.svg",
+    name: "Facebook Meta",
+    severity: 4,
+    timeWaited: 20,
   },
 ];
+
+const SEVERITYMAP = {
+  1:"Severely Critical",
+  2:"Critical",
+  3:"Serous",
+  4:"Fair",
+  5:"Stable"
+}
+interface COLORMAP {
+  [key: number]: string;
+}
+// colors: ["#FF0000", "#FF5C00", "#FFFF00", "#9ACD32", "#008000"],
+const colorMap : COLORMAP = {
+  1: "#FF0000",
+  2: "#FF5C00",
+  3: "#FFFF00",
+  4: "#9ACD32",
+  5: "#008000",
+}
 
 const TableOne = () => {
   return (
     <div className="rounded-sm border border-stroke bg-white px-5 pb-2.5 pt-6 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
       <h4 className="mb-6 text-xl font-semibold text-black dark:text-white">
-        Top Channels
+        Waiting Patients
       </h4>
 
       <div className="flex flex-col">
-        <div className="grid grid-cols-3 rounded-sm bg-gray-2 dark:bg-meta-4 sm:grid-cols-5">
+        <div className="grid grid-cols-3 rounded-sm bg-gray-2 dark:bg-meta-4 sm:grid-cols-4">
           <div className="p-2.5 xl:p-5">
             <h5 className="text-sm font-medium uppercase xsm:text-base">
-              Source
+              Picture
             </h5>
           </div>
           <div className="p-2.5 text-center xl:p-5">
             <h5 className="text-sm font-medium uppercase xsm:text-base">
-              Visitors
+              Name
             </h5>
           </div>
           <div className="p-2.5 text-center xl:p-5">
             <h5 className="text-sm font-medium uppercase xsm:text-base">
-              Revenues
+              Severity
             </h5>
           </div>
           <div className="hidden p-2.5 text-center sm:block xl:p-5">
             <h5 className="text-sm font-medium uppercase xsm:text-base">
-              Sales
+              Time Waited
             </h5>
           </div>
-          <div className="hidden p-2.5 text-center sm:block xl:p-5">
+          {/* <div className="hidden p-2.5 text-center sm:block xl:p-5">
             <h5 className="text-sm font-medium uppercase xsm:text-base">
               Conversion
             </h5>
-          </div>
-        </div>
-
-        {brandData.map((brand, key) => (
+          </div> */}
+        </div> 
+        <div className="border-l-[#008000] " />
+        <div className="border-l-[#9ACD32] " />
+        <div className="border-l-[#FFFF00]" />
+        <div className="border-l-[#FF5C00] " />
+        <div className="border-l-[#FF0000]" />
+        {patientData.map((patient, key) => (
           <div
-            className={`grid grid-cols-3 sm:grid-cols-5 ${
+            className={`grid grid-cols-3 sm:grid-cols-4 border-8 border-white border-l-[${colorMap[patient.severity]}]  `}
+            key={key}
+          >
+            {/* ${
               key === brandData.length - 1
                 ? ""
                 : "border-b border-stroke dark:border-strokedark"
-            }`}
-            key={key}
-          >
+            } */}
+            {/* colors: ["#FF0000", "#FF5C00", "#FFFF00", "#9ACD32", "#008000"], */}
             <div className="flex items-center gap-3 p-2.5 xl:p-5">
-              <div className="flex-shrink-0">
-                <Image src={brand.logo} alt="Brand" width={48} height={48} />
-              </div>
-              <p className="hidden text-black dark:text-white sm:block">
-                {brand.name}
-              </p>
+              {/* <div className="flex-shrink-0">
+                
+              </div> */}
+              <Image src={patient.picture} alt="Brand" width={60} height={60} />
+              {/* <p className="hidden text-black dark:text-white sm:block">
+                {patient.name}
+              </p> */}
             </div>
 
             <div className="flex items-center justify-center p-2.5 xl:p-5">
-              <p className="text-black dark:text-white">{brand.visitors}K</p>
+              <p className="text-black dark:text-white">{patient.name}</p>
             </div>
 
             <div className="flex items-center justify-center p-2.5 xl:p-5">
-              <p className="text-meta-3">${brand.revenues}</p>
+              <p className="text-black dark:text-white">{patient.severity}</p>
             </div>
 
             <div className="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
-              <p className="text-black dark:text-white">{brand.sales}</p>
+              <p className="text-black dark:text-white">{patient.timeWaited}</p>
             </div>
 
-            <div className="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
+            {/* <div className="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
               <p className="text-meta-5">{brand.conversion}%</p>
-            </div>
+            </div> */}
           </div>
         ))}
       </div>
+      
     </div>
   );
 };
