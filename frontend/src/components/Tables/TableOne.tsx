@@ -1,38 +1,9 @@
 import { PATIENT } from "@/types/brand";
 import Image from "next/image";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
-const patientData: PATIENT[] = [
-  {
-    picture: "/images/person_0.jpg",
-    name: "Google Google",
-    severity: 1,
-    timeWaited: 3,
-  },
-  {
-    picture: "/images/person_1.jpg",
-    name: "Twitter Twitter",
-    severity: 3,
-    timeWaited: 15,
-  },
-  {
-    picture: "/images/person_2.jpg",
-    name: "Github Github",
-    severity: 2,
-    timeWaited: 2,
-  },
-  {
-    picture: "/images/person_0.jpg",
-    name: "Vimeo Vimeo",
-    severity: 5,
-    timeWaited: 45,
-  },
-  {
-    picture: "/images/person_1.jpg",
-    name: "Facebook Meta",
-    severity: 4,
-    timeWaited: 20,
-  },
-];
+// let patientData : PATIENT[]; 
 
 const SEVERITYMAP = {
   1:"Severely Critical",
@@ -58,8 +29,18 @@ interface FuncProps {
 }
 
 const TableOne: React.FC<FuncProps> = (props) => {
+  const [patientData, setPatientData] = useState<PATIENT[]>();
+  useEffect(() => {
+    const interval = setInterval(() => {
+      axios.get<PATIENT[]>('http://localhost:5000').then((res) => {
+        setPatientData(res.data);
+      })
+    })
+
+    return () => clearInterval(interval);
+  })
   return (
-    <div className="rounded-sm border border-stroke bg-white px-5 pb-2.5 pt-6 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
+    <div className="rounded-sm border border-stroke bg-white w-180 px-5 pb-2.5 pt-6 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
       <h4 className="mb-6 text-xl font-semibold text-black dark:text-white">
         Waiting Patients
       </h4>
@@ -97,7 +78,7 @@ const TableOne: React.FC<FuncProps> = (props) => {
         <div className="border-l-[#FFFF00]" />
         <div className="border-l-[#FF5C00] " />
         <div className="border-l-[#FF0000]" />
-        {patientData.map((patient:PATIENT, key:number) => (
+        {patientData && patientData.map((patient:PATIENT, key:number) => (
           <button
             className={`grid grid-cols-3 sm:grid-cols-4 border-8 border-white border-l-[${colorMap[patient.severity]}] hover:bg-gray `}
             key={key}

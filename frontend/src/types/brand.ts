@@ -7,4 +7,5 @@ export type PATIENT = {
   // conversion: number;
   severity: number;
   timeWaited: number;
+  _id: number
 };
