@@ -17,7 +17,7 @@ class ResettableTimer:
         return time.time() - self.start_time >= self.timeout
 
 print("Loading...")
-model = YOLO("yolov5s.pt")
+model = YOLO("yolov5su.pt")
 model.eval()
 face_classifier = cv2.CascadeClassifier(
     cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
@@ -43,6 +43,8 @@ def main():
         face = face_classifier.detectMultiScale(
             frame, scaleFactor=1.075, minNeighbors=6, minSize=(40, 40)
         )
+
+        print("Rendered")
         for result in results:
             boxes = result.boxes
             for box in boxes:
@@ -55,16 +57,14 @@ def main():
                         for (x, y, w, h) in face:
                             cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 1)
                         person_roi = frame[y1:y2, x1:x2]
-                        cv2.imwrite(f"backend\\video_stream\\images\\person_{len(storage)}.jpg", person_roi)
+                        cv2.imwrite(f"frontend\\public\\person_{len(storage)}.jpg", person_roi)
                         storage.append(person_roi)
 
         cv2.imshow('frame', frame)
         out.write(frame.astype('uint8'))
-
         #if thresholder.is_timeout():
-        print("10 seconds have passed! Performing action...")
-        print("Number of people detected:", len(storage))
-        #return(len(storage))
+        #print("10 seconds have passed! Performing action...")
+        return(len(storage))
             #thresholder.reset()
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
