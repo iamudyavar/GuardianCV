@@ -19,8 +19,8 @@ def describe(path):
     """
 
     response = model.generate_content([prompt, sample_file_1])
-
-    return response.text
+    print(f"Severity Found: {response}")
+    return response.text[0]
 
 #image_path_1 = "/Users/apendela10/Downloads/test.jpeg"
 #print(describe(image_path_1))

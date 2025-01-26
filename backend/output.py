@@ -14,10 +14,9 @@ def endpoint():
     for i in range(n):
         dict_i = {}
         img_path = f"frontend/public/images/person_{i}.jpg"
-        dict_i["severity"] = res.append(describe(img_path))
+        dict_i["severity"] = describe(img_path)
         dict_i["picture"] = img_path
         dict_i["_id"] = i
         res.append(dict_i)
-    print(res)
     
     return jsonify(res), 200
