@@ -3,35 +3,24 @@ import Image from "next/image";
 
 const patientData: PATIENT[] = [
   {
-    picture: "/images/person_0.jpg",
-    name: "Google Google",
-    severity: 1,
-    timeWaited: 3,
-  },
-  {
     picture: "/images/person_1.jpg",
-    name: "Twitter Twitter",
-    severity: 3,
-    timeWaited: 15,
-  },
-  {
-    picture: "/images/person_2.jpg",
-    name: "Github Github",
+    name: "TBD",
     severity: 2,
     timeWaited: 2,
   },
   {
     picture: "/images/person_0.jpg",
-    name: "Vimeo Vimeo",
+    name: "TBD",
     severity: 5,
-    timeWaited: 45,
+    timeWaited: 10,
   },
-  {
-    picture: "/images/person_1.jpg",
-    name: "Facebook Meta",
-    severity: 4,
-    timeWaited: 20,
-  },
+  
+  // {
+  //   picture: "/images/person_2.jpg",
+  //   name: "Github Github",
+  //   severity: 2,
+  //   timeWaited: 2,
+  // }
 ];
 
 const SEVERITYMAP = {

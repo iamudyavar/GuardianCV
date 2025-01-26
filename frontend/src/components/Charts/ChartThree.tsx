@@ -111,7 +111,7 @@ const ChartThree: React.FC = () => {
             <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#FF0000]"></span>
             <p className="flex w-full justify-between text-sm font-medium text-black dark:text-white">
               <span> Severely Critical </span>
-              <span> 65% </span>
+              <span> 14% </span>
             </p>
           </div>
         </div>
@@ -120,7 +120,7 @@ const ChartThree: React.FC = () => {
             <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#FF5C00]"></span>
             <p className="flex w-full justify-between text-sm font-medium text-black dark:text-white">
               <span> Critical </span>
-              <span> 34% </span>
+              <span> 22% </span>
             </p>
           </div>
         </div>
@@ -129,7 +129,7 @@ const ChartThree: React.FC = () => {
             <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#FFFF00]"></span>
             <p className="flex w-full justify-between text-sm font-medium text-black dark:text-white">
               <span> Serious </span>
-              <span> 45% </span>
+              <span> 18% </span>
             </p>
           </div>
         </div>
@@ -138,7 +138,7 @@ const ChartThree: React.FC = () => {
             <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#9ACD32]"></span>
             <p className="flex w-full justify-between text-sm font-medium text-black dark:text-white">
               <span> Fair </span>
-              <span> 12% </span>
+              <span> 25% </span>
             </p>
           </div>
         </div>
@@ -147,7 +147,7 @@ const ChartThree: React.FC = () => {
             <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#008000]"></span>
             <p className="flex w-full justify-between text-sm font-medium text-black dark:text-white">
               <span> Stable </span>
-              <span> 12% </span>
+              <span> 21% </span>
             </p>
           </div>
         </div>
