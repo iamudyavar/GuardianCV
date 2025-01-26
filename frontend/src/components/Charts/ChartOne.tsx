@@ -90,18 +90,15 @@ const options: ApexOptions = {
   xaxis: {
     type: "category",
     categories: [
-      "6:00 PM",
-      "6:15 PM",
-      "6:30 PM",
-      "6:45 PM",
-      "7:00 PM",
-      "7:15 PM",
-      "7:30 PM",
-      "7:45 PM",
-      "8:00 PM",
-      "8:15 PM",
-      "8:30 PM",
-      "8:45 PM",
+      "10:00 AM",
+      "10:15 AM",
+      "10:30 AM",
+      "10:45 AM",
+      "11:00 AM",
+      "11:15 AM",
+      "11:30 AM",
+      "11:45 AM",
+      "12:00 PM",
     ],
     axisBorder: {
       show: false,
@@ -132,7 +129,7 @@ const ChartOne: React.FC = () => {
   const series = [
     {
       name: "Patients",
-      data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30, 45],
+      data: [ 27, 13, 22, 37, 21, 44, 22, 30, 45],
     },
   ];
 

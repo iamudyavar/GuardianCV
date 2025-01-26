@@ -1,11 +1,12 @@
 "use client";
 import dynamic from "next/dynamic";
-import React from "react";
+import React, { useState } from "react";
 import ChartOne from "../Charts/ChartOne";
 import ChartTwo from "../Charts/ChartTwo";
 import ChatCard from "../Chat/ChatCard";
 import TableOne from "../Tables/TableOne";
 import CardDataStats from "../CardDataStats";
+// import images from "../../../images";
 
 const MapOne = dynamic(() => import("@/components/Maps/MapOne"), {
   ssr: false,
@@ -15,7 +16,12 @@ const ChartThree = dynamic(() => import("@/components/Charts/ChartThree"), {
   ssr: false,
 });
 
+
+
 const ECommerce: React.FC = () => {
+  const [displayImage, setDisplayImage] = useState<string>("");
+
+
   return (
     <>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
@@ -41,9 +47,14 @@ const ECommerce: React.FC = () => {
           <ChartThree />
         </div>
         <div className="col-span-12 xl:col-span-8">
-          <TableOne />
+          <TableOne setImage={setDisplayImage}/>
         </div>
-        <ChatCard />
+        {/* <ChatCard /> */}
+        <div className="flex-row pl-5 rounded-sm border border-stroke bg-white py-6 shadow-default dark:border-strokedark dark:bg-boxdark xl:col-span-4">
+          <img src={`${displayImage}`} className="h-180"/>
+          <button className="px-2 py-2 bg-green-200 mx-auto">Correct</button>
+        </div>
+        
       </div>
     </>
   );

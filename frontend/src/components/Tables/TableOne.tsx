@@ -3,31 +3,31 @@ import Image from "next/image";
 
 const patientData: PATIENT[] = [
   {
-    picture: "/images/brand/brand-01.svg",
+    picture: "/images/person_0.jpg",
     name: "Google Google",
     severity: 1,
     timeWaited: 3,
   },
   {
-    picture: "/images/brand/brand-02.svg",
+    picture: "/images/person_1.jpg",
     name: "Twitter Twitter",
     severity: 3,
     timeWaited: 15,
   },
   {
-    picture: "/images/brand/brand-03.svg",
+    picture: "/images/person_2.jpg",
     name: "Github Github",
     severity: 2,
     timeWaited: 2,
   },
   {
-    picture: "/images/brand/brand-04.svg",
+    picture: "/images/person_0.jpg",
     name: "Vimeo Vimeo",
     severity: 5,
     timeWaited: 45,
   },
   {
-    picture: "/images/brand/brand-05.svg",
+    picture: "/images/person_1.jpg",
     name: "Facebook Meta",
     severity: 4,
     timeWaited: 20,
@@ -53,7 +53,11 @@ const colorMap : COLORMAP = {
   5: "#008000",
 }
 
-const TableOne = () => {
+interface FuncProps {
+  setImage(image: string): void;
+}
+
+const TableOne: React.FC<FuncProps> = (props) => {
   return (
     <div className="rounded-sm border border-stroke bg-white px-5 pb-2.5 pt-6 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
       <h4 className="mb-6 text-xl font-semibold text-black dark:text-white">
@@ -93,10 +97,11 @@ const TableOne = () => {
         <div className="border-l-[#FFFF00]" />
         <div className="border-l-[#FF5C00] " />
         <div className="border-l-[#FF0000]" />
-        {patientData.map((patient, key) => (
-          <div
-            className={`grid grid-cols-3 sm:grid-cols-4 border-8 border-white border-l-[${colorMap[patient.severity]}]  `}
+        {patientData.map((patient:PATIENT, key:number) => (
+          <button
+            className={`grid grid-cols-3 sm:grid-cols-4 border-8 border-white border-l-[${colorMap[patient.severity]}] hover:bg-gray `}
             key={key}
+            onClick={(event:  React.MouseEvent<HTMLButtonElement>) => props.setImage(patient.picture)}
           >
             {/* ${
               key === brandData.length - 1
@@ -108,7 +113,7 @@ const TableOne = () => {
               {/* <div className="flex-shrink-0">
                 
               </div> */}
-              <Image src={patient.picture} alt="Brand" width={60} height={60} />
+              <Image src={patient.picture} alt="Brand" width={60} height={60} className="rounded-full h-15"/>
               {/* <p className="hidden text-black dark:text-white sm:block">
                 {patient.name}
               </p> */}
@@ -118,7 +123,7 @@ const TableOne = () => {
               <p className="text-black dark:text-white">{patient.name}</p>
             </div>
 
-            <div className="flex items-center justify-center p-2.5 xl:p-5">
+            <div className="flex items-center justify-center p-2.5 xl:p-5 heigh:100%">
               <p className="text-black dark:text-white">{patient.severity}</p>
             </div>
 
@@ -129,7 +134,7 @@ const TableOne = () => {
             {/* <div className="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
               <p className="text-meta-5">{brand.conversion}%</p>
             </div> */}
-          </div>
+          </button>
         ))}
       </div>
       
