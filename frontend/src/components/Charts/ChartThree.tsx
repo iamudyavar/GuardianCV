@@ -11,8 +11,8 @@ const options: ApexOptions = {
     fontFamily: "Satoshi, sans-serif",
     type: "donut",
   },
-  colors: ["#3C50E0", "#6577F3", "#8FD0EF", "#0FADCF"],
-  labels: ["Desktop", "Tablet", "Mobile", "Unknown"],
+  colors: ["#FF0000", "#FF5C00", "#FFFF00", "#9ACD32", "#008000"],
+  labels: ["Level 1", "Level 2", "Level 3", "Level 4", "Level 5"],
   legend: {
     show: false,
     position: "bottom",
@@ -35,6 +35,7 @@ const options: ApexOptions = {
       options: {
         chart: {
           width: 380,
+          height: 286,
         },
       },
     },
@@ -50,17 +51,17 @@ const options: ApexOptions = {
 };
 
 const ChartThree: React.FC = () => {
-  const series = [65, 34, 12, 56];
+  const series = [11, 15, 12,18, 13];
 
   return (
     <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pb-5 pt-7.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-5">
       <div className="mb-3 justify-between gap-4 sm:flex">
         <div>
           <h5 className="text-xl font-semibold text-black dark:text-white">
-            Visitors Analytics
+            Patient Analytics
           </h5>
         </div>
-        <div>
+        {/* <div>
           <div className="relative z-20 inline-block">
             <select
               name=""
@@ -95,7 +96,7 @@ const ChartThree: React.FC = () => {
               </svg>
             </span>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <div className="mb-2">
@@ -104,39 +105,48 @@ const ChartThree: React.FC = () => {
         </div>
       </div>
 
-      <div className="-mx-8 flex flex-wrap items-center justify-center gap-y-3">
+      <div className="-mx-8 flex flex-wrap items-center justify-center gap-y-4">
         <div className="w-full px-8 sm:w-1/2">
           <div className="flex w-full items-center">
-            <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-primary"></span>
+            <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#FF0000]"></span>
             <p className="flex w-full justify-between text-sm font-medium text-black dark:text-white">
-              <span> Desktop </span>
+              <span> Severely Critical </span>
               <span> 65% </span>
             </p>
           </div>
         </div>
         <div className="w-full px-8 sm:w-1/2">
           <div className="flex w-full items-center">
-            <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#6577F3]"></span>
+            <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#FF5C00]"></span>
             <p className="flex w-full justify-between text-sm font-medium text-black dark:text-white">
-              <span> Tablet </span>
+              <span> Critical </span>
               <span> 34% </span>
             </p>
           </div>
         </div>
         <div className="w-full px-8 sm:w-1/2">
           <div className="flex w-full items-center">
-            <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#8FD0EF]"></span>
+            <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#FFFF00]"></span>
             <p className="flex w-full justify-between text-sm font-medium text-black dark:text-white">
-              <span> Mobile </span>
+              <span> Serious </span>
               <span> 45% </span>
             </p>
           </div>
         </div>
         <div className="w-full px-8 sm:w-1/2">
           <div className="flex w-full items-center">
-            <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#0FADCF]"></span>
+            <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#9ACD32]"></span>
             <p className="flex w-full justify-between text-sm font-medium text-black dark:text-white">
-              <span> Unknown </span>
+              <span> Fair </span>
+              <span> 12% </span>
+            </p>
+          </div>
+        </div>
+        <div className="w-full px-8 sm:w-1/2">
+          <div className="flex w-full items-center">
+            <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#008000]"></span>
+            <p className="flex w-full justify-between text-sm font-medium text-black dark:text-white">
+              <span> Stable </span>
               <span> 12% </span>
             </p>
           </div>
