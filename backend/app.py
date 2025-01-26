@@ -5,12 +5,13 @@ import time
 import os
 
 print("BEFORE WHILE LOOP")
+start = 0
 while(True):
     n = main.main()
     print("main.main EXECUTED")
     print(f"WE HAVE DETECTED {n} INDIVIDUALS.")
     for i in range(n):
-        img_path = f"backend/video_stream/images/person_{i}.jpg"
+        img_path = f"frontend/public/images/person_{i}.jpg"
         print(img_path)
         res = describe(img_path)#prompting.describe_image(img_path)
         print(res)

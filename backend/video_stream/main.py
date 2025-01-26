@@ -47,7 +47,7 @@ def main():
         print("Rendered")
         for result in results:
             boxes = result.boxes
-            for box in boxes:
+            for i, box in enumerate(boxes):
                 if 'person' in result.names[int(box.cls)]:
                     x1, y1, x2, y2 = map(int, box.xyxy[0])
                     confidence  = box.conf.item()
@@ -57,7 +57,7 @@ def main():
                         for (x, y, w, h) in face:
                             cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 1)
                         person_roi = frame[y1:y2, x1:x2]
-                        cv2.imwrite(f"frontend\\public\\person_{len(storage)}.jpg", person_roi)
+                        cv2.imwrite(f"frontend\\public\\images\\person_{i}.jpg", person_roi)
                         storage.append(person_roi)
 
         cv2.imshow('frame', frame)
@@ -75,5 +75,3 @@ def main():
         out.release()
         cv2.destroyAllWindows()
         cv2.waitKey()
-
-main()
