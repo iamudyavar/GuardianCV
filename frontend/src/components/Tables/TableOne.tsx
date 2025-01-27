@@ -27,18 +27,26 @@ const colorMap : COLORMAP = {
 interface FuncProps {
   setImage(image: string): void;
 }
-
+// let patientData: PATIENT[] = []
 const TableOne: React.FC<FuncProps> = (props) => {
   const [patientData, setPatientData] = useState<PATIENT[]>();
+  const fetchData = async () => {
+    console.log("fetching data")
+    try {
+      console.log("I'm happening")
+      await axios.get('http://127.0.0.1:5000/output/get-output').then(res => {setPatientData(res.data)}).catch(err => {console.log(err)});
+      // setPatientData(res.data);
+      console.log(patientData)
+      console.log("I get called");
+    } catch (error) {
+      console.error("Error fetching patient data:", error);
+    }
+    // Set the next call after 10 seconds
+    setTimeout(fetchData, 10 * 1000);
+  };
   useEffect(() => {
-    const interval = setInterval(() => {
-      axios.get<PATIENT[]>('http://localhost:5000').then((res) => {
-        setPatientData(res.data);
-      })
-    })
-
-    return () => clearInterval(interval);
-  })
+    fetchData();
+  }, [])
   return (
     <div className="rounded-sm border border-stroke bg-white w-180 px-5 pb-2.5 pt-6 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
       <h4 className="mb-6 text-xl font-semibold text-black dark:text-white">

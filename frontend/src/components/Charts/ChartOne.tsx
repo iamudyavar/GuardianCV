@@ -90,15 +90,15 @@ const options: ApexOptions = {
   xaxis: {
     type: "category",
     categories: [
-      "10:00 AM",
-      "10:15 AM",
-      "10:30 AM",
-      "10:45 AM",
-      "11:00 AM",
-      "11:15 AM",
-      "11:30 AM",
-      "11:45 AM",
-      "12:00 PM",
+      "2:00 PM",
+      "2:15 PM",
+      "2:30 PM",
+      "2:45 PM",
+      "3:00 PM",
+      "3:15 PM",
+      "3:30 PM",
+      "3:45 PM",
+      "4:00 PM",
     ],
     axisBorder: {
       show: false,
@@ -143,7 +143,7 @@ const ChartOne: React.FC = () => {
             </span>
             <div className="w-full">
               <p className="font-semibold text-primary">
-                Number of patients waiting
+                Number of patients in hospital
               </p>
               {/* <p className="text-sm font-medium">12.04.2022 - 12.05.2022</p> */}
             </div>
